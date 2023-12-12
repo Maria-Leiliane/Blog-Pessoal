@@ -30,6 +30,8 @@ public class PostagemController {
 
 	@Autowired
 	private PostagemRepository postagemRepository;
+	
+	@Autowired
 
 	@GetMapping
 	public ResponseEntity<List<Postagem>> getAll() {
