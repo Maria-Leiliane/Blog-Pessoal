@@ -24,22 +24,26 @@ public class Postagem {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column( length = 100)
+	@Column(length = 100)
 	@NotBlank(message = "O attributo título é Obrigatório!")
 	@Size(min = 5, max = 100, message = "O atributo título deve conter no mínimo 5 e no máximo 100 caracteres")
 	private String titulo;
 
-	@Column( length = 1000)
+	@Column(length = 1000)
 	@NotBlank(message = "O attributo título é Obrigatório!")
 	@Size(min = 5, max = 1000, message = "O atributo título deve conter no mínimo 10 e no máximo 1000 caracteres")
 	private String texto;
 
 	@UpdateTimestamp
 	private LocalDateTime data;
-	
+
 	@ManyToOne
 	@JsonIgnoreProperties("postagem")
 	private Tema tema;
+	
+	@ManyToOne
+	@JsonIgnoreProperties("postagem")
+	private Usuario usuario;
 
 	public Long getId() {
 		return id;
@@ -81,6 +85,4 @@ public class Postagem {
 		this.tema = tema;
 	}
 
-	
-	
 }
