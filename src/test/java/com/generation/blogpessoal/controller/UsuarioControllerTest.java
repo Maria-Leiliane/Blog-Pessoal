@@ -93,8 +93,8 @@ public class UsuarioControllerTest {
 				"Kendal Katherine Correia", "kendalk@email.com.br", "78945612", ""));
 
 		/* Requisição HTTP */
-
-		ResponseEntity<Usuario> corpoResposta = testRestTemplate.withBasicAuth("root@root.com", "rootroot")
+		ResponseEntity<Usuario> corpoResposta = testRestTemplate
+				.withBasicAuth("root@root.com", "rootroot")
 				.exchange("/usuarios/atualizar", HttpMethod.PUT, corpoRequisicao, Usuario.class);
 
 		/* Verifica o HTTP Status Code */
