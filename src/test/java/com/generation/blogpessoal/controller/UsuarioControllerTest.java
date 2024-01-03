@@ -141,7 +141,7 @@ public class UsuarioControllerTest {
 		/* Verifica se o usuário retornado é o mesmo que foi cadastrado */
 		assertEquals(usuarioCadastrado.getId(), resposta.getBody().getId());
 		assertEquals(usuarioCadastrado.getNome(), resposta.getBody().getNome());
-		/* Adicione mais verificações conforme necessário */
+	
 	}
 
 	@Test
@@ -153,7 +153,7 @@ public class UsuarioControllerTest {
 
 	
 	    /* Corpo da Requisição para o login */
-	    UsuarioLogin usuarioLogin = new UsuarioLogin("candela@email.com", "cand8765");
+	    UsuarioLogin usuarioLogin = new UsuarioLogin(0L, "", "candela@email.com", "cand8765","","");
 	    ResponseEntity<UsuarioLogin> corpoResposta = testRestTemplate.exchange(
 	            "/usuarios/logar", HttpMethod.POST,
 	            new HttpEntity<>(usuarioLogin), UsuarioLogin.class);
@@ -161,7 +161,7 @@ public class UsuarioControllerTest {
 	    /* Verifica o HTTP Status Code */
 	    assertEquals(HttpStatus.OK, corpoResposta.getStatusCode());
 
-	    /* Adicione mais verificações conforme necessário, como verificar o corpo da resposta */
+	    /* Verificações */
 	    assertNotNull(corpoResposta.getBody(), "O corpo da resposta não deve ser nulo");
 	}
 
